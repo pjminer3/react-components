@@ -1,8 +1,9 @@
-var Grocerylist = () => (
+var Grocerylist = (props) => (
 <ul>
-  <GroceryListItem items={['Bread']} />
-  <GroceryListItem items={['Water']} />
-  <GroceryListItem items={['Am I doing this?!']} />
+  <GroceryListItem items={props.groceryItems[0]} />
+  <GroceryListItem items={props.groceryItems[1]} />
+  <GroceryListItem items={props.groceryItems[2]} />
+  <GroceryListItem items={props.groceryItems[3]} />
 </ul>
 );
 
@@ -15,7 +16,46 @@ var Grocerylist = () => (
 // )
 
 var GroceryListItem = (props) => (
-  <li>{props.items[0]}</li>
+  <li>{props.items}</li>
 );
 
-ReactDOM.render(<Grocerylist />, document.getElementById('app'));
+var groceryItems = ['Water', 'Bread', 'Milk', 'Cookies'];
+
+ReactDOM.render(<Grocerylist groceryItems={groceryItems} />, document.getElementById('app'));
+
+
+
+
+// ----------------- ES5 SHOWS UP ONLINE -----------------------
+// 'use strict';
+
+// var Grocerylist = function Grocerylist(props) {
+//   return React.createElement(
+//     'ul',
+//     null,
+//     React.createElement(GroceryListItem, { items: props.groceryItems[0] }),
+//     React.createElement(GroceryListItem, { items: props.groceryItems[1] }),
+//     React.createElement(GroceryListItem, { items: props.groceryItems[2] }),
+//     React.createElement(GroceryListItem, { items: props.groceryItems[3] })
+//   );
+// };
+
+// // var BreadComponent = () => (
+// //   <li>Bread</li>
+// // )
+
+// // var WaterComponent = () => (
+// //   <li>Water</li>
+// // )
+
+// var GroceryListItem = function GroceryListItem(props) {
+//   return React.createElement(
+//     'li',
+//     null,
+//     props.items
+//   );
+// };
+
+// var groceryItems = ['Water', 'Bread', 'Milk', 'Cookies'];
+
+// ReactDOM.render(React.createElement(Grocerylist, { groceryItems: groceryItems }), document.getElementById('app'));
